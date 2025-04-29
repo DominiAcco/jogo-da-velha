@@ -5,6 +5,7 @@ import './Game.css';
 const Game = () => {
   const [squares, setSquares] = useState<string[]>(Array(9).fill(''));
   const [xIsNext, setXIsNext] = useState(true);
+  const [isDraw, setIsDraw] = useState(false);
 
   const winner = calculateWinner(squares);
 
@@ -13,17 +14,25 @@ const Game = () => {
     const nextSquares = squares.slice();
     nextSquares[i] = xIsNext ? 'X' : 'O';
     setSquares(nextSquares);
+
+    if (!calculateWinner(nextSquares) && nextSquares.every(square => square !== '')) {
+      setIsDraw(true);
+    }
+
     setXIsNext(!xIsNext);
   };
 
   const handleRestart = () => {
     setSquares(Array(9).fill(''));
     setXIsNext(true);
+    setIsDraw(false);
   };
 
   const status = winner
     ? `Vencedor: ${winner}`
-    : `Próximo jogador: ${xIsNext ? 'X' : 'O'}`;
+    : isDraw
+      ? 'Empate!'
+      : `Próximo jogador: ${xIsNext ? 'X' : 'O'}`;
 
   return (
     <div className="game">

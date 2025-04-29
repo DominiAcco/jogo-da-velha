@@ -1,5 +1,15 @@
 .game {
-  margin-top: 20px;
+  
+  display: flex;
+  flex-direction: column;     /* Empilha os itens verticalmente */
+  align-items: center;     /* Empilha os itens verticalmente */
+  justify-content: center;    /* Alinha no centro vertical (eixo principal) */
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: #038dfd;
+  color: #000;
+ 
 }
 
 .status {
@@ -14,4 +24,6 @@
   font-size: 16px;
   cursor: pointer;
   display: block;
+  color: #141414;
+  background-color: #ff5100;
 }
